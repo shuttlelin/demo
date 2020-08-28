@@ -1,0 +1,102 @@
+一、快捷键
+1. Pycharm
+```
+Ctrl+Y：删除当前行
+Ctrl+D：复制当前行
+Ctrl+Shift+方向键上/下：当前行向上/下移动
+Ctrl+F：查找
+Ctrl+R：查找并替换
+Ctrl+Shift+U：大写
+```
+2. VSCode
+
+二、依赖
+1. 安装：pip install -r requirements.txt
+```
+若出现 Command "python setup.py egg_info" failed with error code 1 in C:\Users\SHULIN~1.YIT\AppData\Local\Temp\pip-build-bpyp7m12\bcrypt\
+    执行 python -m pip install --upgrade --force pip
+```
+2. 生成：pip freeze > requirements.txt
+
+Git
+1. 初始化git仓库：git init（.git用来跟踪管理版本库，ls -ah查看）
+2. 仓库当前状态：git stattus
+3. 分支：
+```
+列出所有分支：
+    本地：git branch
+    远程：git branch -r
+    本地和远程：git branch -a
+新建分支：git branch branch_name
+    并切换：git checkout -b branch_name
+        推送到远程：git push origin branch-name:branch-name（远程:本地）
+    拉取远程分支到本地：
+        1. git fetch origin dev
+        2. git checkout -b dev(本地分支名称) origin/dev(远程分支名称)
+切换分支：git checkout branch_name
+合并分支：git merge branch_name（指定分支到当前分支）
+删除分支：
+    本地：git branch -d branch_name
+    远程：git push origin --delete branch_name
+```
+```
+拉取分支: 【远程有自己分支时执行】
+	git fetch origin release/sldeng/2.1.5
+	git checkout -b release/sldeng/2.1.5(本地分支名称) origin/release/sldeng/2.1.5(远程分支名称)
+新建自己的分支: 【远程没有自己分支时执行】
+	git checkout -b release/sldeng/2.1.5
+	git push origin release/sldeng/2.1.5:release/sldeng/2.1.5 将分支推送到远程 ]
+```
+4. 添加到暂存区：
+		指定文件/目录：git add file/dir
+		当前目录的所有文件：git add .
+5. 提交到仓库区：
+		所有文件：git commit -m "message"
+		指定文件：git commit file -m "message"
+6. 拉取到本地：git pull [remote] [branch]
+7. 推送到远程：git push [remote] [branch]
+		强行推送：git push [remote] [branch] --force
+		所有分支：git push [remote] --all
+8. 删除工作区文件，并将这次删除放入暂存区：git rm [file1]
+9. 查看修改内容：git diff
+
+TMUX
+1. Ctrl+b+
+```
+窗口：
+    c：新建窗口
+    &：关闭当前窗口
+    0~9：切换至指定窗口
+    p：切换至上一窗口
+    n：切换至下一窗口
+    l：前后窗口间互相切换
+    w：通过窗口列表切换窗口
+    ,：重命名当前窗口，便于识别
+    .：修改当前窗口编号，相当于重新排序
+    f：在所有窗口中查找关键词，便于窗口多了切换
+    d：关闭当前窗口(还可以再次进入)
+    :kill-server：杀死所有进程
+```
+```
+面板：
+    "：将当前面板上下分屏
+    %：将当前面板左右分屏
+    x：关闭当前分屏
+    q：显示面板编号
+    o：选择当前窗口中下一个面板
+    方向健：移动光标选择对应面板
+    z：最大化当前所在面板
+    page up：向上滚动屏幕，q 退出
+    page down：向下滚动屏幕，q 退出
+    !：将当前面板置于新窗口,即新建一个窗口,其中仅包含当前面板
+
+鼠标点击哪个面板，哪个面板就激活(可操作)
+    Shift+: --> 输入 source ~/.tmux.conf --> 回车
+    vi ~/.tmux.conf
+	setw -g mouse-resize-pane on        # 用鼠标拖动调节pane的大小(拖动pane之间的分隔线)
+	setw -g mouse-select-pane on        # 用鼠标点击pane来激活该pane
+	setw -g mouse-select-window on      # 用鼠标点击来切换活动window(点击状态栏的窗口名称)
+	setw -g mode-mouse on               # window/pane里面的鼠标支持(可以用鼠标滚轮回滚显示窗口内容，此时还可以用鼠标选取文本)
+```
+2. tmux ls：查看哪些窗口存活着
+3. tmux a -t 0：进入0窗口（0下标）
